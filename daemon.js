@@ -217,7 +217,7 @@ export async function main(ns) {
         { name: "hacknet-upgrade-manager.js", args: ["-c", "--max-payoff-time", "1h"] }, // Kickstart hash income by buying everything with up to 1h payoff time immediately
         { name: "stockmaster.js", tail: true, shouldRun: () => playerStats.hasTixApiAccess, args: ["--show-market-summary"] }, // Start our stockmaster if we have the required stockmarket access
         //{ name: "gangs.js", tail: true, shouldRun: () => 2 in dictSourceFiles }, // Script to create manage our gang for us
-        { name: "work-for-factions.js", shouldRun: () => 4 in dictSourceFiles, args: ['--fast-crimes-only'] }, // Script to manage how we use our "focus" work
+        { name: "work-for-factions.js", shouldRun: () => 4 in dictSourceFiles, args: ['--fast-crimes-only', '--no-coding-contracts'] }, // Script to manage how we use our "focus" work
         { name: "spend-hacknet-hashes.js", shouldRun: () => 9 in dictSourceFiles, args: ["-v"] }, // Always have this running to make sure hashes aren't wasted
         //{ name: "sleeve.js", tail: true, shouldRun: () => 10 in dictSourceFiles }, // Script to create manage our sleeves for us
     ];
