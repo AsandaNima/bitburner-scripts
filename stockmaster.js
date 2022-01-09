@@ -35,7 +35,7 @@ const argsSchema = [
     ['l', false], // Stop any other running stockmaster.js instances and sell all stocks
     ['liquidate', false],
     ['mock', false], // If set to true, will "mock" buy/sell but not actually buy/sell anything
-    ['noisy', false], // If set to true, tprints and announces each time stocks are bought/soldgetHostnames
+    ['noisy', true], // If set to true, tprints and announces each time stocks are bought/soldgetHostnames
     ['disable-shorts', false], // If set to true, will "mock" buy/sell but not actually buy/sell anything
     ['reserve', 0], // A fixed amount of money to not spend
     ['fracB', 0.4], // Fraction of assets to have as liquid before we consider buying more stock

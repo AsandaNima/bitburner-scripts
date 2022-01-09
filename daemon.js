@@ -137,8 +137,8 @@ const argsSchema = [
     ['x', false], // Focus on a strategy that produces the most hack EXP rather than money
     ['xp-only', false],
     ['n', false], // Can toggle on using hacknet nodes for extra hacking ram (at the expense of hash production)
-    ['silent-misfires', false],
-    ['use-hacknet-nodes', false],
+    ['silent-misfires', true],
+    ['use-hacknet-nodes', true],
     ['initial-max-targets', 2],
     ['max-steal-percentage', 0.75], // Don't steal more than this in case something goes wrong with timing or scheduling, it's hard to recover from
     ['cycle-timing-delay', 16000],
@@ -216,10 +216,10 @@ export async function main(ns) {
         { name: "stats.js", shouldRun: () => ns.getServerMaxRam("home") >= 64 /* Don't waste precious RAM */ }, // Adds stats not usually in the HUD
         { name: "hacknet-upgrade-manager.js", args: ["-c", "--max-payoff-time", "1h"] }, // Kickstart hash income by buying everything with up to 1h payoff time immediately
         { name: "stockmaster.js", tail: true, shouldRun: () => playerStats.hasTixApiAccess, args: ["--show-market-summary"] }, // Start our stockmaster if we have the required stockmarket access
-        { name: "gangs.js", tail: true, shouldRun: () => 2 in dictSourceFiles }, // Script to create manage our gang for us
-        { name: "work-for-factions.js", shouldRun: () => 4 in dictSourceFiles, args: ['--fast-crimes-only', '--no-coding-contracts'] }, // Script to manage how we use our "focus" work
+        //{ name: "gangs.js", tail: true, shouldRun: () => 2 in dictSourceFiles }, // Script to create manage our gang for us
+        { name: "work-for-factions.js", shouldRun: () => 4 in dictSourceFiles, args: ['--fast-crimes-only'] }, // Script to manage how we use our "focus" work
         { name: "spend-hacknet-hashes.js", shouldRun: () => 9 in dictSourceFiles, args: ["-v"] }, // Always have this running to make sure hashes aren't wasted
-        { name: "sleeve.js", tail: true, shouldRun: () => 10 in dictSourceFiles }, // Script to create manage our sleeves for us
+        //{ name: "sleeve.js", tail: true, shouldRun: () => 10 in dictSourceFiles }, // Script to create manage our sleeves for us
     ];
     asynchronousHelpers.forEach(helper => helper.isLaunched = false);
     asynchronousHelpers.forEach(helper => helper.requiredServer = "home"); // All helpers should be launched at home since they use tempory scripts, and we only reserve ram on home
