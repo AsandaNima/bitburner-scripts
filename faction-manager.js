@@ -39,7 +39,7 @@ const argsSchema = [
     // Augmentation purchasing-related options. Controls what augmentations are included in cost calculations, and optionally purchased
     ['aug-desired', []], // These augs will be marked as "desired" whether or not they match desired-stats
     ['omit-aug', []], // Augmentations to exclude from the augmentation summary because we do not wish to purchase this round
-    ['stat-desired', ['hacking', 'faction_rep', 'company_rep', 'charisma', 'hacknet']], // Augs that give these will be starred
+    ['stat-desired', ['hacking', 'faction_rep', 'company_rep', 'charisma', 'hacknet', "agility", "defense", "dexterity", "strength"]], // Augs that give these will be starred
     ['disable-faction', []], // Factions to omit from all data, stats, and calcs, (e.g.) if you do not want to purchase augs from them, or do not want to see them because they are impractical to join at this time
     ['disable-donations', false], // When displaying "obtainable" augs and prices, don't include augs that require a donation to meet their rep requirements
     ['purchase', false], // Set to true to pull the trigger on purchasing all desired augs in the order specified
